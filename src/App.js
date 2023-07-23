@@ -1,25 +1,37 @@
-import logo from './logo.svg';
+import { NavLink, useRoutes } from 'react-router-dom';
+import navigation from './utils/RoutesPaths';
 import './App.css';
 
 function App() {
+  const routePath = useRoutes(navigation);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ul>
+        <li>
+          <NavLink style={linkDeco} to="/">
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink style={linkDeco} to="/Products">
+            Products
+          </NavLink>
+        </li>
+        <li>
+          <NavLink style={linkDeco} to="/about">
+            about
+          </NavLink>
+        </li>
+      </ul>
+      <hr />
+      {routePath}
     </div>
   );
 }
 
 export default App;
+
+const linkDeco = {
+  textDecoration: 'none',
+};
